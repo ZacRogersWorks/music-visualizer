@@ -1,15 +1,32 @@
-import React, { Suspense, useRef } from "react";
+
+import React, {Suspense, useEffect, useRef, useState } from "react";
+
 import { Canvas, useFrame } from "@react-three/fiber";
 
 import { Environment, OrbitControls, useHelper } from "@react-three/drei";
 
+
 import DubScene from "./dub/DubScene";
 import Loading from "../Loading";
 
-function Background(props) {
+import addAudio from "../audio/addAudio";
 
-  // const audioCtx = new AudioContext
+function Background() {
+  const audioCtx = new AudioContext();
+  const [ready, setReady] = useState(false)
+  
+  const chords = addAudio(audioCtx, "/dub/chords.mp3")
+  const kick = addAudio(audioCtx, "/dub/kick.mp3")
+  const bass = addAudio(audioCtx, "/dub/bass.mp3")
+  const perc = addAudio(audioCtx, "/dub/perc.mp3")
+  const sample = addAudio(audioCtx, "/dub/sample.mp3")
 
+  useEffect(() => {
+    if( chords.ready && kick.ready && bass.ready && perc.ready && sample.ready) {
+      setReady(true)
+      console.log("Testing ready", ready)
+    }
+  }, [chords.ready, kick.ready, bass.ready, perc.ready, sample.ready])
 
 
   return (
