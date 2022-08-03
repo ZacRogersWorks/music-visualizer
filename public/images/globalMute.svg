@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111" height="111" viewBox="0 0 111 111">
+  <defs>
+    <filter id="Rectangle_3" x="0" y="0" width="111" height="111" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#fff"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-136 -718.605)">
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(166 748.605)" fill="none" stroke="#fff" stroke-width="4">
+      <rect width="51" height="51" rx="25.5" stroke="none"/>
+      <rect x="2" y="2" width="47" height="47" rx="23.5" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 136, 718.6)" filter="url(#Rectangle_3)">
+      <g id="Rectangle_3-2" data-name="Rectangle 3" transform="translate(30 30)" fill="none" stroke="#fff" stroke-width="4">
+        <rect width="51" height="51" rx="25.5" stroke="none"/>
+        <rect x="2" y="2" width="47" height="47" rx="23.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_metro-volume-mute2" data-name="Icon metro-volume-mute2" d="M27.831,18.463V20.7H25.6l-2.819-2.819L19.959,20.7H17.727V18.463l2.819-2.819-2.819-2.819V10.592h2.233l2.819,2.819L25.6,10.592h2.233v2.233l-2.819,2.819ZM13.517,27.432a.842.842,0,0,1-.6-.247L6.432,20.7H3.413a.842.842,0,0,1-.842-.842v-8.42a.842.842,0,0,1,.842-.842H6.432L12.921,4.1a.842.842,0,0,1,1.437.6V26.59a.842.842,0,0,1-.842.842Z" transform="translate(176.129 758.29)" fill="#fff"/>
+  </g>
+</svg>

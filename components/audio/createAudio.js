@@ -8,7 +8,7 @@ export async function createAudio(url) {
     source.loop = true
     // This is why it doesn't run in Safari 🍏🐛. Start has to be called in an onClick event
     // which makes it too awkward for a little demo since you need to load the async data first
-    source.start(0)
+    source.start(4)
     // Create gain node and an analyser
     const gain = context.createGain()
     const analyser = context.createAnalyser()

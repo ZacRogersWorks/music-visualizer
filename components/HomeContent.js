@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import Modal from "./Modal";
 
@@ -69,9 +70,10 @@ function HomeContent({ ready, setReady }) {
             </p>
           </div>
           <div className="w-full flex flex-col items-center justify-center">
-            <button
+            <Link
+              href="/tracks/dub"
               className="border-4 rounded-full p-8 shadow-glow mb-4"
-              onClick={() => setReady(true)}
+              // onClick={() => setReady(true)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +89,7 @@ function HomeContent({ ready, setReady }) {
                   fill="#fff"
                 />
               </svg>
-            </button>
+            </Link>
             <p>Start the experience</p>
           </div>
         </div>
