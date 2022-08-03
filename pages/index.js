@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      {ready && <Background />}
+      {/* {ready && <Background />} */}
       <HomeContent ready={ready} setReady={setReady} />
     </>
   );
