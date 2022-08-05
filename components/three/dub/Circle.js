@@ -30,40 +30,40 @@ const initializeArray = () => {
 
 initializeArray();
 
-function Circle({ playing, muteAll }) {
+function Circle({ playing, kick }) {
   const ref = useRef();
   const [circleArray, setCircleArray] = useState(initArray);
 
-  const { gain, context, update, data } = suspend(
-    () => createAudio(`/dub/kick.mp3`),
-    ["/dub/kick.mp3"]
-  );
+  // const { gain, context, update, data } = suspend(
+  //   () => createAudio(`/dub/kick.mp3`),
+  //   ["/dub/kick.mp3"]
+  // );
+
+  // useEffect(() => {
+  //   // Connect the gain node, which plays the audio
+  //   gain.connect(context.destination);
+  //   // Disconnect it on unmount
+  //   console.log(gain);
+  //   return () => {
+  //     gain.disconnect();
+  //   };
+  // }, [gain, context]);
 
   useEffect(() => {
-    // Connect the gain node, which plays the audio
-    gain.connect(context.destination);
-    // Disconnect it on unmount
-    console.log(gain);
-    return () => {
-      gain.disconnect();
-    };
-  }, [gain, context]);
-
-  useEffect(() => {
-    if (playing) gain.gain.setTargetAtTime(1, context.currentTime, 0.015);
-    else if (!playing) gain.gain.setTargetAtTime(0, context.currentTime, 0.015);
+    if (playing) kick.gain.gain.setTargetAtTime(1, kick.context.currentTime, 0.015);
+    else if (!playing) kick.gain.gain.setTargetAtTime(0, kick.context.currentTime, 0.015);
   }, [playing]);
 
   useFrame((state, delta) => {
-    let avg = update();
+    let avg = kick.update();
     // state.camera.fov = 25 - data.avg / 20;
     // state.camera.updateProjectionMatrix();
 
     ref.current.rotation.z += delta / 2;
     // ref.current.rotation.y += delta / 5;
-    ref.current.scale.x = playing ? data.avg / 350 + 1 : ref.current.scale.x;
-    ref.current.scale.y = playing ? data.avg / 350 + 1 : ref.current.scale.y;
-    ref.current.scale.z = playing ? data.avg / 350 + 1 : ref.current.scale.z;
+    ref.current.scale.x = playing ? kick.data.avg / 350 + 1 : ref.current.scale.x;
+    ref.current.scale.y = playing ? kick.data.avg / 350 + 1 : ref.current.scale.y;
+    ref.current.scale.z = playing ? kick.data.avg / 350 + 1 : ref.current.scale.z;
   });
 
   return (
@@ -77,7 +77,7 @@ function Circle({ playing, muteAll }) {
             id={instance.id}
             xPosition={instance.x}
             yPosition={instance.y}
-            avg={data.avg}
+            avg={kick.data.avg}
           />
         ))}
     </Instances>
@@ -109,8 +109,6 @@ function ShapeInstance({ id, xPosition, yPosition, avg }) {
       scale={0.5}
       position={[xPosition, yPosition, 0]}
       color="#ffffff"
-      castShadow
-      receiveShadow
     />
   );
 }

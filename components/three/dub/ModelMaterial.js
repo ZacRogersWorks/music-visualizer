@@ -5,35 +5,32 @@ import { createAudio } from "../../audio/createAudio";
 import { suspend } from "suspend-react";
 import { LayerMaterial, Depth, Noise } from "lamina";
 
-function ModelMaterial({ url, obj = new Object3D(), playingProps, ...props }) {
+function ModelMaterial({ playing, chords }) {
   const noise = useRef();
   const depth = useRef();
 
-  const { gain, context, update, data } = suspend(
-    () => createAudio("/dub/chords.mp3"),
-    ["/dub/chords.mp3"]
-  );
+  // const { gain, context, update, data } = suspend(
+  //   () => createAudio("/dub/chords.mp3"),
+  //   ["/dub/chords.mp3"]
+  // );
+
+  // useEffect(() => {
+  //   return () => chords.gain.gain.disconnect();
+  // }, [chords.gain.gain]);
 
   useEffect(() => {
-    // Play Audio
-    gain.connect(context.destination);
-
-    return () => gain.disconnect();
-  }, [gain, context]);
-
-  useEffect(() => {
-    if (playingProps.playing ) gain.gain.setTargetAtTime(1, context.currentTime, .015)
-    else if (!playingProps.playing) gain.gain.setTargetAtTime(0, context.currentTime, .015)
-  }, [playingProps.playing])
+    if (playing ) chords.gain.gain.setTargetAtTime(1, chords.context.currentTime, .015)
+    else if (!playing) chords.gain.gain.setTargetAtTime(0, chords.context.currentTime, .015)
+  }, [playing])
 
   useFrame((state, delta) => {
-    let avg = update();
+    let avg = chords.update();
     // Set the hue according to the frequency average
     // ref.current.material.color.setHSL(avg / 25, 0.75, 0.75);
     // ref.current.instanceMatrix.needsUpdate = true
     noise.current.offset.x += delta / 30;
-    depth.current.far = playingProps.playing ? (data.avg / 14) : 0;
-    depth.current.near = playingProps.playing ? (data.avg / 14) : 0;
+    depth.current.far = playing ? (chords.data.avg / 14) : 0;
+    depth.current.near = playing ? (chords.data.avg / 14) : 0;
   });
 
   return (

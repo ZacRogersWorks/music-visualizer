@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { SpotLight, useHelper, Stars, Cloud } from "@react-three/drei";
 import { DirectionalLightHelper, Vector3 } from "three";
 
@@ -12,15 +12,21 @@ import Pyramid from "./Pyramid";
 
 import Loading from "../../Loading";
 
-function DubScene({ playingProps }) {
+function DubScene({ playingProps, chords, kick, bass, perc, sample }) {
   const lightRef = useRef(null);
   const starRef = useRef(null);
+
+  const { gl } = useThree();
 
   const { camera, mouse } = useThree();
   const vecPosition = new Vector3();
   const vecLookAt = new Vector3();
 
   useHelper(lightRef, DirectionalLightHelper, "blue");
+
+  useEffect(() => {
+   console.log(gl.info) 
+  })
 
   useFrame((state) => {
     state.camera.lookAt(vecLookAt.set(0, 0, 0.5));
@@ -32,17 +38,17 @@ function DubScene({ playingProps }) {
 
   return (
     <scene>
-      <MyLight playing={playingProps.samplePlaying} />
+      <MyLight playing={playingProps.samplePlaying} sample={sample} />
       <directionalLight
         intensity={1}
         ref={lightRef}
         position={[0.5, 0.5, 0.5]}
       />
         {/* <Gradient /> */}
-        <Pyramid playing={playingProps.bassPlaying} />
-        <Circle playing={playingProps.kickPlaying} muteAll={playingProps.muteAll} />
-        <Model  playing={playingProps.chordsPlaying} muteAll={playingProps.muteAll} />
-        <Orbit playing={playingProps.percPlaying} muteAll={playingProps.muteAll}/>
+        <Pyramid playing={playingProps.bassPlaying} bass={bass}/>
+        <Circle playing={playingProps.kickPlaying} kick={kick} />
+        <Model  playing={playingProps.chordsPlaying} chords={chords} />
+        <Orbit playing={playingProps.percPlaying} perc={perc} />
         <Stars
           ref={starRef}
           radius={1}

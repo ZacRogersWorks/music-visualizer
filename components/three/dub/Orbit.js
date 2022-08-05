@@ -7,29 +7,29 @@ import { createAudio } from "../../audio/createAudio";
 
 
 
-function Orbit({playing}) {
+function Orbit({playing, perc}) {
   const ref = useRef();
 
-  const { gain, context, update, data } = suspend(
-    () => createAudio(`/dub/perc.mp3`),
-    ["/dub/perc.mp3"]
-  );
+  // const { gain, context, update, data } = suspend(
+  //   () => createAudio(`/dub/perc.mp3`),
+  //   ["/dub/perc.mp3"]
+  // );
+
+  // useEffect(() => {
+  //   // Connect the gain node, which plays the audio
+  //   gain.connect(context.destination);
+  //   // Disconnect it on unmount
+  //   console.log(gain)
+  //   return () => gain.disconnect();
+  // }, [gain, context]);
 
   useEffect(() => {
-    // Connect the gain node, which plays the audio
-    gain.connect(context.destination);
-    // Disconnect it on unmount
-    console.log(gain)
-    return () => gain.disconnect();
-  }, [gain, context]);
-
-  useEffect(() => {
-    if (playing ) gain.gain.setTargetAtTime(1, context.currentTime, .015)
-    else if (!playing) gain.gain.setTargetAtTime(0, context.currentTime, .015)
+    if (playing ) perc.gain.gain.setTargetAtTime(1, perc.context.currentTime, .015)
+    else if (!playing) perc.gain.gain.setTargetAtTime(0, perc.context.currentTime, .015)
   }, [playing])
 
   useFrame((state, delta) => {
-    let avg = update();
+    let avg = perc.update();
     ref.current.position.x = Math.sin(state.clock.getElapsedTime() / 1.5) * 5
     ref.current.position.y = Math.sin(state.clock.getElapsedTime() * .7) * 1.5
     ref.current.position.z = Math.cos(state.clock.getElapsedTime() / 1.5) * 5
@@ -37,9 +37,9 @@ function Orbit({playing}) {
     ref.current.rotation.x = state.clock.getElapsedTime()
     ref.current.rotation.z = state.clock.getElapsedTime()
 
-    ref.current.scale.x = playing ? (data.avg/8 + 1) : ref.current.scale.x
-    ref.current.scale.y = playing ? (data.avg/8 + 1) : ref.current.scale.y
-    ref.current.scale.z = playing ? (data.avg/8 + 1) : ref.current.scale.z
+    ref.current.scale.x = playing ? (perc.data.avg/8 + 1) : ref.current.scale.x
+    ref.current.scale.y = playing ? (perc.data.avg/8 + 1) : ref.current.scale.y
+    ref.current.scale.z = playing ? (perc.data.avg/8 + 1) : ref.current.scale.z
   });
 
   return (
