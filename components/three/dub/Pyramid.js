@@ -6,37 +6,37 @@ import { suspend } from "suspend-react";
 import { createAudio } from "../../audio/createAudio";
 
 
-function Pyramid({playing}) {
+function Pyramid({playing, bass}) {
   const ref = useRef();
 
-  const { gain, context, update, data } = suspend(
-    () => createAudio(`/dub/bass.mp3`),
-    ["/dub/bass.mp3"]
-  );
+  // const { gain, context, update, data } = suspend(
+  //   () => createAudio(`/dub/bass.mp3`),
+  //   ["/dub/bass.mp3"]
+  // );
+
+  // useEffect(() => {
+  //   // Connect the gain node, which plays the audio
+  //   gain.connect(context.destination);
+  //   // Disconnect it on unmount
+
+  //   return () => gain.disconnect();
+  // }, [gain, context]);
 
   useEffect(() => {
-    // Connect the gain node, which plays the audio
-    gain.connect(context.destination);
-    // Disconnect it on unmount
-
-    return () => gain.disconnect();
-  }, [gain, context]);
-
-  useEffect(() => {
-    if (playing ) gain.gain.setTargetAtTime(1, context.currentTime, .015)
-    else if (!playing) gain.gain.setTargetAtTime(0, context.currentTime, .015)
+    if (playing ) bass.gain.gain.setTargetAtTime(1, bass.context.currentTime, .015)
+    else if (!playing) bass.gain.gain.setTargetAtTime(0, bass.context.currentTime, .015)
   }, [playing])
 
   useFrame((state, delta) => {
-    let avg = update();
+    let avg = bass.update();
     ref.current.rotation.y = state.clock.getElapsedTime() * .05
-    ref.current.scale.x = playing ? (data.avg / 25) + .25 : 1
-    ref.current.scale.y = playing ? (data.avg / 25) + .25 : 1
-    ref.current.scale.z = playing ? (data.avg / 25) + .25 : 1
+    ref.current.scale.x = playing ? (bass.data.avg / 25) + .25 : 1
+    ref.current.scale.y = playing ? (bass.data.avg / 25) + .25 : 1
+    ref.current.scale.z = playing ? (bass.data.avg / 25) + .25 : 1
   });
 
   return (
-    <Cone ref={ref} args={[15, 15, 4]} position={[0, 0, -30]} receiveShadow>
+    <Cone ref={ref} args={[15, 15, 4]} position={[0, 0, -30]} >
         <meshStandardMaterial color={"#8338EC"} />
     </Cone>
   );

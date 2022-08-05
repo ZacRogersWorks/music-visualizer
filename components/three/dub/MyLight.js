@@ -7,30 +7,30 @@ import { createAudio } from "../../audio/createAudio";
 
 
 
-function MyLight({playing}) {
+function MyLight({playing, sample}) {
   const ref = useRef();
 
-  const { gain, context, update, data } = suspend(
-    () => createAudio(`/dub/sample.mp3`),
-    ["/dub/sample.mp3"]
-  );
+  // const { gain, context, update, data } = suspend(
+  //   () => createAudio(`/dub/sample.mp3`),
+  //   ["/dub/sample.mp3"]
+  // );
+
+  // useEffect(() => {
+  //   // Connect the gain node, which plays the audio
+  //   gain.connect(context.destination);
+  //   // Disconnect it on unmount
+
+  //   return () => gain.disconnect();
+  // }, [gain, context]);
 
   useEffect(() => {
-    // Connect the gain node, which plays the audio
-    gain.connect(context.destination);
-    // Disconnect it on unmount
-
-    return () => gain.disconnect();
-  }, [gain, context]);
-
-  useEffect(() => {
-    if (playing ) gain.gain.setTargetAtTime(.4, context.currentTime, .015)
-    else if (!playing) gain.gain.setTargetAtTime(0, context.currentTime, .015)
+    if (playing) sample.gain.gain.setTargetAtTime(.4, sample.context.currentTime, .015)
+    else if (!playing) sample.gain.gain.setTargetAtTime(0, sample.context.currentTime, .015)
   }, [playing])
 
   useFrame((state, delta) => {
-    let avg = update();
-    ref.current.intensity = playing ? data.avg / 3 : 2
+    let avg = sample.update();
+    ref.current.intensity = playing ? sample.data.avg / 3 : 2
   });
 
   return (

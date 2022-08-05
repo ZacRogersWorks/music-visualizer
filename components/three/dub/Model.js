@@ -20,12 +20,11 @@ export default function Model(props) {
     rotation={[0,0,0]}
     >
       <mesh
-        castShadow
         receiveShadow
         geometry={nodes.BustBaseMesh_Decimated.geometry}
         rotation={[Math.PI / 2, 0, 0]}
       >
-        <ModelMaterial url="/testAudio.wav" playingProps={props} />
+        <ModelMaterial playing={props.playing} chords={props.chords} />
         </mesh>
     </group>
   );

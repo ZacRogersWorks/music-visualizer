@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Background from "../../components/three/Background";
 import MuteButton from "../../components/MuteButton";
 import GlobalMute from "../../components/GlobalMute";
+import { Stats } from "@react-three/drei";
 
 function Track() {
   const [kickPlaying, setKickPlaying] = useState(true);
@@ -10,22 +11,23 @@ function Track() {
   const [samplePlaying, setSamplePlaying] = useState(false);
   const [chordsPlaying, setChordsPlaying] = useState(true);
   const [bassPlaying, setBassPlaying] = useState(false);
-  const [globalMute, setGlobalMute] = useState(false);
+  const [play, setPlay] = useState(false);
 
   const router = useRouter();
 
   return (
     <div className="relative">
+      <Stats showPanel={0} className="stats" />
       <Background
         kickPlaying={kickPlaying}
         percPlaying={percPlaying}
         samplePlaying={samplePlaying}
         chordsPlaying={chordsPlaying}
         bassPlaying={bassPlaying}
-        globalMute={globalMute}
+        play={play}
+        setPlay={setPlay}
       />
-
-      <div className="pointer-events-none absolute h-screen w-screen px-8 pt-12 pb-16 lowercase flex flex-col justify-between">
+      <div className="pointer-events-none absolute h-screen w-screen px-8 pt-12 pb-16 lowercase flex flex-col justify-between items-center">
         <div className="w-full flex justify-between">
           <button className="pointer-events-auto" onClick={() => router.back()}>
             <svg
@@ -43,8 +45,9 @@ function Track() {
               />
             </svg>
           </button>
-          {/* <GlobalMute globalMute={globalMute} setGlobalMute={setGlobalMute} /> */}
         </div>
+
+        { play ?
         <div className="flex justify-center flex-wrap">
           <MuteButton
             name="chords"
@@ -71,7 +74,9 @@ function Track() {
             playing={samplePlaying}
             setPlaying={setSamplePlaying}
           />
+
         </div>
+         : null }
       </div>
     </div>
   );
