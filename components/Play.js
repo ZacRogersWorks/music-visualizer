@@ -6,11 +6,11 @@ const Play = ({ playAudio }) => {
     <Html prepend center>
       <div
         className={
-          "text-white font-bold w-full h-full flex justify-center items-center"
+          "bg-mi font-bold w-full h-full flex justify-center items-center"
         }
       >
         <button
-          className={" flex flex-col items-center text-4xl"}
+          className={"text-sky text-4xl font-light italic flex flex-col items-center "}
           onClick={() => playAudio()}
         >
           <svg
@@ -25,7 +25,7 @@ const Play = ({ playAudio }) => {
               data-name="Icon awesome-play"
               d="M26.524,13.418,4.525.413A2.983,2.983,0,0,0,0,2.994V29A3,3,0,0,0,4.525,31.58l22-13a3,3,0,0,0,0-5.162Z"
               transform="translate(0 -0.002)"
-              fill="#fff"
+              fill="#B28686"
             />
           </svg>
           start

@@ -24,7 +24,7 @@ function Orbit({playing, perc}) {
   // }, [gain, context]);
 
   useEffect(() => {
-    if (playing ) perc.gain.gain.setTargetAtTime(1, perc.context.currentTime, .015)
+    if (playing ) perc.gain.gain.setTargetAtTime(.5, perc.context.currentTime, .015)
     else if (!playing) perc.gain.gain.setTargetAtTime(0, perc.context.currentTime, .015)
   }, [playing])
 

@@ -1,100 +1,55 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import Modal from "./Modal";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import Menu from "./Menu";
+import SocialLinks from "./SocialLinks";
 
-function HomeContent({ ready, setReady }) {
-  const [modalOpen, setModalOpen] = useState();
+function HomeContent() {
+  const [menuOpen, setMenuOpen] = useState();
+  const router = useRouter();
+
+  const menuClose = () => {
+    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    router.events.on("hashChangeStart", menuClose);
+
+    return () => router.events.off("hashChangeStart", menuClose);
+  }, [router.events]);
 
   return (
     <>
-      <div
-        className={`${ready ? "ready" : "notready"} ${
-          ready && "clicked"
-        } h-screen w-screen px-8 pt-12 pb-16 lowercase bg-gradient-to-b from-black to-gray-800`}
+      <section
+        id="home"
+        className="relative h-screen w-full pt-24 px-6 md:px-12 pb-32 bg-[url('/images/bgImg.jpg')] bg-cover bg-center"
       >
-        <div className={`relative h-full w-full flex flex-col justify-around`}>
+        <div className="absolute bottom-0 left-0 h-[66%] w-full bg-gradient-to-t from-black to-transparent"></div>
+        <nav className="absolute top-[32px] right-0 w-[50%] md:w-[33%] xl:w-[20%]">
           <button
-            className={`${modalOpen && "hidden"} absolute top-0 right-0`}
-            onClick={() => setModalOpen(true)}
+            className={`${
+              menuOpen && "hidden"
+            } w-full flex flex-col items-end text-clay`}
+            onClick={() => setMenuOpen(true)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="33"
-              height="33"
-              viewBox="0 0 33 33"
-            >
-              <g
-                id="Icon_feather-info"
-                data-name="Icon feather-info"
-                transform="translate(-1.5 -1.5)"
-              >
-                <path
-                  id="Path_1"
-                  data-name="Path 1"
-                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z"
-                  fill="none"
-                  stroke="#fff"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="3"
-                />
-                <path
-                  id="Path_2"
-                  data-name="Path 2"
-                  d="M18,24V18"
-                  fill="none"
-                  stroke="#fff"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="3"
-                />
-                <path
-                  id="Path_3"
-                  data-name="Path 3"
-                  d="M18,12h0"
-                  fill="none"
-                  stroke="#fff"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="3"
-                />
-              </g>
-            </svg>
+            <hr className="w-full border-[1px]"></hr>
+            <hr className="w-[50%] mt-2 border-[1px]"></hr>
+            <hr className="w-[25%] mt-2 border-[1px]"></hr>
           </button>
-          <h1 className="text-7xl font-bold">Shoyei</h1>
-          <div>
-            <p className="text-4xl font-bold mb-5">Welcome!</p>
-            <p className="text-xl">
-              Let me show you an idea I’ve been working on to make my music more
-              enjoyable, interactive, and meditative
+        </nav>
+        <div className={`relative h-full w-full flex flex-col justify-between`}>
+          <h1 className="text-7xl font-light italic uppercase tracking-[16px] text-sand">
+            Shoyei
+          </h1>
+          <div className="flex flex-col items-end">
+            <p className="text-3xl text-sky lowercase italic font-light tracking-[12px] mb-4 mr-[-12px]">
+              Audio Artist
             </p>
-          </div>
-          <div className="w-full flex flex-col items-center justify-center">
-            <Link
-              href="/tracks/dub"
-              className="border-4 rounded-full p-8 shadow-glow mb-4"
-              // onClick={() => setReady(true)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="27.998"
-                height="32"
-                viewBox="0 0 27.998 32"
-              >
-                <path
-                  id="Icon_awesome-play"
-                  data-name="Icon awesome-play"
-                  d="M26.524,13.418,4.525.413A2.983,2.983,0,0,0,0,2.994V29A3,3,0,0,0,4.525,31.58l22-13a3,3,0,0,0,0-5.162Z"
-                  transform="translate(0 -0.002)"
-                  fill="#fff"
-                />
-              </svg>
-            </Link>
-            <p>Start the experience</p>
+            <SocialLinks />
           </div>
         </div>
-      </div>
-      {modalOpen && <Modal setModalOpen={setModalOpen}/>}
+      </section>
+      {menuOpen && <Menu setMenuOpen={setMenuOpen} />}
     </>
   );
 }

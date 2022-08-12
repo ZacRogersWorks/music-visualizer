@@ -101,7 +101,7 @@ function Background(props) {
 
   return (
     <div className="canvas-container flex justify-center">
-      <Canvas camera={{ position: [0, 0, 60], fov: 12, near:2, far: 100}}>
+      <Canvas camera={{ position: [0, 0, 60], fov: 20, near:2, far: 100}}>
         <color attach="background" args={["black"]} />
         {props.play ? (
           <Suspense fallback={<Loading />}>
@@ -117,7 +117,7 @@ function Background(props) {
         ) : (
           <Play playAudio={playAudio} />
         )}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
       </Canvas>
     </div>
   );

@@ -1,14 +1,16 @@
 import { useState } from "react";
 import Background from "../components/three/Background";
 import HomeContent from "../components/HomeContent";
+import SoundGallery from "../components/SoundGallery";
+import AboutMe from "../components/AboutMe";
 
 export default function Home() {
-  const [ready, setReady] = useState(false);
 
   return (
-    <>
-      {/* {ready && <Background />} */}
-      <HomeContent ready={ready} setReady={setReady} />
-    </>
+    <main className="bg-black overflow-x-hidden">
+      <HomeContent />
+      <SoundGallery />
+      <AboutMe />
+    </main>
   );
 }
