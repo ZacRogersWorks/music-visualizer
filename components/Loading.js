@@ -4,7 +4,8 @@ import { Html } from '@react-three/drei'
 function Loading() {
   return (
     <Html prepend center>
-        <div className={"text-white text-4xl font-bold w-full h-full flex justify-center items-center"}>
+      <div className="loader"/>
+        <div className={"text-sky text-4xl uppercase font-light italic w-full h-full flex-col"}>
             loading assets...
         </div>
     </Html>
