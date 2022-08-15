@@ -48,8 +48,6 @@ function Background(props) {
     );
   }
 
-
-
   const playAudio = () => {
     if (ready) {
       if (
@@ -92,7 +90,7 @@ function Background(props) {
         perc?.gain.disconnect();
         sample?.gain.disconnect();
 
-        audioCtx?.close();
+      //  if (audioCtx) audioCtx.close();
       }
     };
   }, []);
