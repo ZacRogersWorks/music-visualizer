@@ -8,7 +8,7 @@ function MuteButton({ name, playing, setPlaying }) {
     <button
       className={`${
         playing && "playing"
-      } uppercase font-light pointer-events-auto relative h-20 w-24 text-center font-bold justify-center
+      } uppercase font-light pointer-events-auto relative h-20 w-24 text-center justify-center
       before:content=["] before:absolute before:top-[50%] before:left-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:h-20 before:w-20 before:border-solid before:border-4 before:rounded-full`}
       onClick={togglePlay}
     >

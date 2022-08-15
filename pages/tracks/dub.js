@@ -2,10 +2,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Background from "../../components/three/Background";
 import MuteButton from "../../components/MuteButton";
-import GlobalMute from "../../components/GlobalMute";
-import { Stats } from "@react-three/drei";
 
-function Track() {
+function Dub() {
   const [kickPlaying, setKickPlaying] = useState(true);
   const [percPlaying, setPercPlaying] = useState(false);
   const [samplePlaying, setSamplePlaying] = useState(false);
@@ -83,4 +81,4 @@ function Track() {
   );
 }
 
-export default Track;
+export default Dub;
