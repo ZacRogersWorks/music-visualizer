@@ -34,7 +34,7 @@ function Background(props) {
   let sample
 
   if (typeof window !== "undefined") {
-    const audioCtx = new AudioContext()
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
 
     chords = suspend(
       () => addAudio(audioCtx, "/dub/chords.mp3"),

@@ -58,7 +58,7 @@ function Dub() {
           play={play}
           setPlay={setPlay}
         />
-        <div className="pointer-events-none absolute left-0 top-0 h-screen w-screen px-8 pt-12 pb-16 flex flex-col justify-between items-center z-50">
+        <div className="pointer-events-none absolute left-0 top-0 h-screen w-screen px-8 pt-12 pb-32 flex flex-col justify-between items-center z-50">
           <div className="w-full flex justify-between items-center">
             <motion.button
               className="pointer-events-auto text-white hover:cursor-pointer hover:scale-110 transition-transform duration-300"
