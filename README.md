@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# www.shoyei.net
 
-## Getting Started
+I let my ancient Squarespace site expire and wanted to start building a new website for myself. I knew I wanted to make something that was interactive and featured my music, while continuing to practice my 3d web development, so I decided to center the website around a musical experience that users had some ability to control.
 
-First, run the development server:
+## Tech
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**Next.js** - not strictly necessary for this type of project, but I wanted to practice using it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**React-Three-Fiber / React-Three-Drei** - bread and butter.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+**Framer Motion** - It's what I'm comfortable with, and I love their implementation of component exit animations.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Primary Feature
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The primary feature is the audio visualizer tracking multiple stems from a song I wrote and recorded previously. The user is presented with a Play prompt that initializes the app, and connects the audio tracks to their respective gain nodes to begin playback in sync. The user is shown a ThreeJS scene, with different 3d elements being manipulated by the Web Audio API's audio analyzer. They are able to mute and unmute each separate track and see how their choices affect the visualization.
 
-## Learn More
+## Challenges
 
-To learn more about Next.js, take a look at the following resources:
+The biggest challenge was discovering that rather than simply requiring a click to enable audio playback, Safari specifically requires starting the audio source node to start playback within an onClick event. This required a considerable refactor, since I had already abstracted the start() function.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Another challenge was creating the red mandala in the visualizer. I had to learn some math, and do a lot of experimenting to get it to move and change in a pleasing way. Lots of fun and can't wait to do more.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Inspiration
 
-## Deploy on Vercel
+I drew inspiration for functionality, movement, and code from the following projects:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Poimandres Example](https://codesandbox.io/s/simple-audio-analyser-wu51m)
+[Paul Henschel's Example](https://codesandbox.io/s/audio-analyser-dvokj)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

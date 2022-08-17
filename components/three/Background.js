@@ -1,12 +1,9 @@
 import React, {
   Suspense,
   useEffect,
-  useLayoutEffect,
-  useRef,
   useState,
 } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { suspend } from "suspend-react";
 import addAudio from "../audio/addAudio";
 
@@ -106,7 +103,6 @@ function Background(props) {
         console.log("Updated Width")
       });
 
-    
     return () => {
         window?.removeEventListener("resize", () => setWidth(window?.innerWidth));
       if (chords.ready) {
