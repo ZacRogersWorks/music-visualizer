@@ -21,7 +21,7 @@ const AboutMe = () => {
       id="about"
       className="relative w-full pt-16 px-6 pb-24 flex flex-col justify-between"
     >
-      <div className="absolute bottom-0 right-0 w-[80%] lg:w-[50%] h-auto">
+      <div className="absolute bottom-0 right-0 w-[80%] lg:w-[50%] xl:w-[45%] h-auto">
         <Image
           src="/images/footerbg.jpg"
           alt="Background"

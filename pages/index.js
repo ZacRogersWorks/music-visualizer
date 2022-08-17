@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Audio Artist & DJ" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta
           name="keywords"
           content="music, artist, DJ, producer, synthesizers"

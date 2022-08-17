@@ -69,7 +69,7 @@ const SoundGallery = () => {
             1.
           </p>
           <p className="relative text-sky uppercase text-5xl font-light ml-5 mt-[-1.5rem] mb-[-1rem] z-20">
-            Ujjjjayi
+            Cashmere
           </p>
           <div className="relative ml-8 hover:cursor-pointer hover:scale-[1.02] transition-transform duration-300 overflow-hidden rounded-md">
             <Link href="/tracks/dub">

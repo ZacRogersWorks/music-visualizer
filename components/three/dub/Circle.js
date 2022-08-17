@@ -61,9 +61,9 @@ function Circle({ playing, kick }) {
 
     ref.current.rotation.z += delta / 2;
     // ref.current.rotation.y += delta / 5;
-    ref.current.scale.x = playing ? kick.data.avg / 350 + 1 : ref.current.scale.x;
-    ref.current.scale.y = playing ? kick.data.avg / 350 + 1 : ref.current.scale.y;
-    ref.current.scale.z = playing ? kick.data.avg / 350 + 1 : ref.current.scale.z;
+    ref.current.scale.x = playing ? kick.data.avg / 250 + 1 : ref.current.scale.x;
+    ref.current.scale.y = playing ? kick.data.avg / 250 + 1 : ref.current.scale.y;
+    ref.current.scale.z = playing ? kick.data.avg / 250 + 1 : ref.current.scale.z;
   });
 
   return (

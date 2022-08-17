@@ -142,7 +142,7 @@ export const indexVariants = {
     animate: {
       transition: {
         staggerChildren: .2,
-        delayChildren: 1
+        delayChildren: .4
       }
     }
   },

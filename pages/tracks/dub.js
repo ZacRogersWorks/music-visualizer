@@ -34,7 +34,7 @@ function Dub() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Audio Artist & DJ" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta
           name="keywords"
           content="music, artist, DJ, producer, synthesizers"
@@ -69,7 +69,7 @@ function Dub() {
             setPlay={setPlay}
           />
         </Suspense>
-        <div className="pointer-events-none absolute left-0 top-0 h-screen w-screen px-8 pt-12 pb-32 flex flex-col justify-between items-center z-50">
+        <div className="pointer-events-none absolute left-0 top-0 h-screen w-screen px-8 pt-12 pb-24 flex flex-col justify-between items-center z-50">
           <div className="w-full flex justify-between items-center">
             <motion.button
               className="pointer-events-auto text-white hover:cursor-pointer hover:scale-110 transition-transform duration-300"
@@ -99,13 +99,13 @@ function Dub() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              Ujjjjayi
+              Cashmere
             </motion.h1>
           </div>
 
           {play ? (
             <motion.div
-              className="flex justify-center flex-wrap text-clay"
+              className="flex justify-center flex-wrap text-[#9c9a9a]"
               variants={indexVariants.muteContainer}
               initial="initial"
               animate="animate"

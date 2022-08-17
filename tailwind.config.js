@@ -13,7 +13,7 @@ theme: {
     midnight: "#0D1B22",
     black: "#000000",
     transparent:"transparent",
-    white: "#ffffff"
+    white: "#ffffff",
   },
   extend: {
     fontFamily: {

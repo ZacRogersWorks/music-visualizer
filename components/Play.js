@@ -41,8 +41,8 @@ const Play = ({ playAudio }) => {
           </motion.button>
         </div>
         <div className="mt-12 w-[66vw] md:w-[33vw] flex justify-center">
-          <p className="text-center flex justify-center">
-            <span className="uppercase text-clay mr-2 text-center">Note:</span>To hear audio
+          <p className="text-center">
+            <span className="uppercase text-clay mr-2">Note:</span>To hear audio
             on iOS devices, your mute switch must be turned off.
           </p>
         </div>

@@ -25,7 +25,7 @@ function Background(props) {
 
   const [ready, setReady] = useState(false);
   const [width, setWidth] = useState(initialWidth);
-  const [fov, setFov] = useState(17)
+  const [fov, setFov] = useState(10)
 
   let chords
   let kick
@@ -59,6 +59,7 @@ function Background(props) {
   }
 
   useEffect(() => {
+    console.log(width)
     if (width < mobileBreakpoint) {
       setFov(25)
     } else {
@@ -100,7 +101,10 @@ function Background(props) {
 
   useEffect(() => {
 
-      window?.addEventListener("resize", () => setWidth(window?.innerWidth));
+      window?.addEventListener("resize", () => {
+        setWidth(window?.innerWidth)
+        console.log("Updated Width")
+      });
 
     
     return () => {
@@ -131,7 +135,7 @@ function Background(props) {
 
   return (
     <div className="canvas-container flex justify-center">
-      <Canvas camera={{ position: [0, 0, 60], fov: fov, near: 2, far: 100 }}>
+      <Canvas camera={{ position: [0, 0, 60], fov: 18, near: 2, far: 100 }}>
         <color attach="background" args={["black"]} />
         {props.play ? (
           <Suspense fallback={<Loading />}>
