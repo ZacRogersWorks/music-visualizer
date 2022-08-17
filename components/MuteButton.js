@@ -8,7 +8,7 @@ function MuteButton({ name, playing, setPlaying }) {
     playing ? setPlaying(false) : setPlaying(true);
   };
   return (
-    <motion.button
+    <button
       className={`${
         playing ? "text-white" : null
       } uppercase font-light pointer-events-auto relative h-20 w-24 text-center justify-center
@@ -17,7 +17,7 @@ function MuteButton({ name, playing, setPlaying }) {
       variants={indexVariants.muteBtns}
     >
       {name}
-    </motion.button>
+    </button>
   );
 }
 

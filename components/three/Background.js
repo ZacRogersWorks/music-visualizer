@@ -99,20 +99,12 @@ function Background(props) {
   };
 
   useEffect(() => {
-    const handleResizeWindow = () => {
-      if (typeof window !== "undefined") {
-        setWidth(window?.innerWidth)
-      }
-    };
-    if (typeof window !== "undefined") {
-      window?.addEventListener("resize", handleResizeWindow);
-    }
+
+      window?.addEventListener("resize", () => setWidth(window?.innerWidth));
+
     
     return () => {
-      if (typeof window !== "undefined") {
-        window?.removeEventListener("resize", handleResizeWindow);
-
-      }
+        window?.removeEventListener("resize", () => setWidth(window?.innerWidth));
       if (chords.ready) {
         chords?.gain.disconnect();
         kick?.gain.disconnect();

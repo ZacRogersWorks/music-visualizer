@@ -1,12 +1,21 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { motion } from "framer-motion";
 
-import Background from "../../components/three/Background";
+// import Background from "../../components/three/Background";
 import MuteButton from "../../components/MuteButton";
 
 import { indexVariants } from "../../components/animation/variants";
+
+import dynamic from "next/dynamic";
+
+const Background = dynamic(
+  () => {
+    return import("../../components/three/Background");
+  },
+  { ssr: false }
+);
 
 function Dub() {
   const [kickPlaying, setKickPlaying] = useState(true);
@@ -49,15 +58,17 @@ function Dub() {
       </Head>
       <div className="relative">
         {/* <Stats showPanel={0} className="stats" /> */}
-        <Background
-          kickPlaying={kickPlaying}
-          percPlaying={percPlaying}
-          samplePlaying={samplePlaying}
-          chordsPlaying={chordsPlaying}
-          bassPlaying={bassPlaying}
-          play={play}
-          setPlay={setPlay}
-        />
+        <Suspense>
+          <Background
+            kickPlaying={kickPlaying}
+            percPlaying={percPlaying}
+            samplePlaying={samplePlaying}
+            chordsPlaying={chordsPlaying}
+            bassPlaying={bassPlaying}
+            play={play}
+            setPlay={setPlay}
+          />
+        </Suspense>
         <div className="pointer-events-none absolute left-0 top-0 h-screen w-screen px-8 pt-12 pb-32 flex flex-col justify-between items-center z-50">
           <div className="w-full flex justify-between items-center">
             <motion.button
@@ -83,7 +94,7 @@ function Dub() {
               </svg>
             </motion.button>
             <motion.h1
-              className="uppercase text-2xl"
+              className={"uppercase text-2xl"}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}

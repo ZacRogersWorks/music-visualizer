@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 const Play = ({ playAudio }) => {
   return (
     <Html prepend center>
-      <AnimatePresence>
         <div
           className={
             "bg-mi font-bold w-full h-full flex flex-col justify-center items-center"
@@ -35,7 +34,7 @@ const Play = ({ playAudio }) => {
                 d="M9,7.579V37.919a.781.781,0,0,0,1.17.72l24.049-15.17a.859.859,0,0,0,0-1.43L10.17,6.869A.774.774,0,0,0,9,7.579Z"
                 transform="translate(-9 -6.751)"
                 fill="#B28686"
-                start
+                
               />
             </svg>
             PLAY
@@ -47,7 +46,6 @@ const Play = ({ playAudio }) => {
             on iOS devices, your mute switch must be turned off.
           </p>
         </div>
-      </AnimatePresence>
     </Html>
   );
 };

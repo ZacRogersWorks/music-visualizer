@@ -35,11 +35,11 @@ export default function Home() {
         <meta property="og:site_name" content="Shoyei" key="ogsitename" />
       </Head>
       <main className="bg-black overflow-x-hidden">
-        <AnimatePresence>
+
           <HomeContent />
-          <SoundGallery key={randomKey} />
+          <SoundGallery  />
           <AboutMe />
-        </AnimatePresence>
+
       </main>
     </>
   );
