@@ -80,6 +80,7 @@ const SoundGallery = () => {
                   layout="responsive"
                   width="1608"
                   height="904"
+                  placeholder="blur"
                 />
               </a>
             </Link>

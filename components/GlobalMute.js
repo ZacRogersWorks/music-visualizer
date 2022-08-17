@@ -8,7 +8,7 @@ function GlobalMute({ globalMute, setGlobalMute }) {
 
   return (
     <button className={`${globalMute && "muted"} pointer-events-auto`} onClick={toggleMute}>
-      <Image src={"/images/globalMute.svg"} alt="Mute All" width={48} height={48}></Image>
+      <Image src={"/images/globalMute.svg"} alt="Mute All" width={48} height={48} placeholder="blur"></Image>
     </button>
   );
 }

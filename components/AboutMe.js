@@ -28,6 +28,7 @@ const AboutMe = () => {
           layout="responsive"
           width="2160"
           height="2160"
+          placeholder="blur"
         />
       </div>
       <div>
@@ -77,6 +78,7 @@ const AboutMe = () => {
               layout="responsive"
               width="1080"
               height="1080"
+              placeholder="blur"
             />
           </div>
         </motion.div>
