@@ -6,8 +6,8 @@ import { indexVariants } from "./animation/variants";
 
 import SocialLinks from "./SocialLinks";
 
-import footerBg from '../public/images/footerbg.jpg'
-import me from '../public/images/about_thumbnail.jpg'
+import footerBg from '../public/images/footerbg.webp'
+import me from '../public/images/about_thumbnail.webp'
 
 const AboutMe = () => {
   const headingControls = useAnimation();

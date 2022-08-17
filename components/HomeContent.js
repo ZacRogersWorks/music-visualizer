@@ -25,7 +25,7 @@ function HomeContent() {
     <div className="overflow-x-hidden">
       <motion.section
         id="home"
-        className="relative h-screen w-full pt-24 px-6 md:px-12 pb-32 bg-[url('/images/bgImg.jpg')] bg-cover bg-center overflow-x-hidden"
+        className="relative h-screen w-full pt-24 px-6 md:px-12 pb-32 bg-[url('/images/bgImg.webp')] bg-cover bg-center overflow-x-hidden"
         initial={{opacity:.01}}
         animate={{opacity:1}}
         transition={{duration:.5}}

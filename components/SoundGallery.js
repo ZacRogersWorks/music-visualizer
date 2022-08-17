@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { indexVariants } from "./animation/variants";
 
-import cashmereThumb from '../public/images/tracks/cashmere_thumbnail.jpg'
+import cashmereThumb from '../public/images/tracks/cashmere_thumbnail.webp'
 
 const randomKey = Math.random();
 
