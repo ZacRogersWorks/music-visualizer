@@ -14,9 +14,19 @@ import DubScene from "./dub/DubScene";
 import Loading from "../Loading";
 import Play from "../Play";
 
+const mobileBreakpoint = 500;
+const initialWidth = () => {
+  if (typeof window !== "undefined") {
+    return window.innerWidth
+  }
+}
+
 function Background(props) {
 
   const [ready, setReady] = useState(false);
+  const [width, setWidth] = useState(initialWidth);
+  const [fov, setFov] = useState(17)
+
   let chords
   let kick
   let bass
@@ -47,6 +57,14 @@ function Background(props) {
       ["/dub/sample.mp3"]
     );
   }
+
+  useEffect(() => {
+    if (width < mobileBreakpoint) {
+      setFov(25)
+    } else {
+      setFov(17)
+    }
+  }, [width])
 
   const playAudio = () => {
     if (ready) {
@@ -81,8 +99,20 @@ function Background(props) {
   };
 
   useEffect(() => {
+    const handleResizeWindow = () => {
+      if (typeof window !== "undefined") {
+        setWidth(window?.innerWidth)
+      }
+    };
+    if (typeof window !== "undefined") {
+      window?.addEventListener("resize", handleResizeWindow);
+    }
     
     return () => {
+      if (typeof window !== "undefined") {
+        window?.removeEventListener("resize", handleResizeWindow);
+
+      }
       if (chords.ready) {
         chords?.gain.disconnect();
         kick?.gain.disconnect();
@@ -109,7 +139,7 @@ function Background(props) {
 
   return (
     <div className="canvas-container flex justify-center">
-      <Canvas camera={{ position: [0, 0, 60], fov: 20, near: 2, far: 100 }}>
+      <Canvas camera={{ position: [0, 0, 60], fov: fov, near: 2, far: 100 }}>
         <color attach="background" args={["black"]} />
         {props.play ? (
           <Suspense fallback={<Loading />}>
