@@ -1,36 +1,46 @@
 import React from "react";
 import { Html } from "@react-three/drei";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Play = ({ playAudio }) => {
   return (
     <Html prepend center>
+      <AnimatePresence>
       <div
         className={
           "bg-mi font-bold w-full h-full flex justify-center items-center"
         }
+        exit={{opacity: 0}}
+        transition={{duration: 1, ease: "easeOut"}}
       >
-        <button
-          className={"text-sky text-4xl font-light italic flex flex-col items-center "}
+        <motion.button
+          className={
+            "text-sky text-4xl font-light italic flex flex-col items-center"
+          }
           onClick={() => playAudio()}
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{duration: .7, ease: "easeOut"}}
         >
           <svg
-            className={"mb-4 "}
+          className="mb-6 hover:scale-125 transition-transform duration-300"
             xmlns="http://www.w3.org/2000/svg"
-            width="27.998"
+            width="25.602"
             height="32"
-            viewBox="0 0 27.998 32"
+            viewBox="0 0 25.602 32"
           >
             <path
-              id="Icon_awesome-play"
-              data-name="Icon awesome-play"
-              d="M26.524,13.418,4.525.413A2.983,2.983,0,0,0,0,2.994V29A3,3,0,0,0,4.525,31.58l22-13a3,3,0,0,0,0-5.162Z"
-              transform="translate(0 -0.002)"
-              fill="#B28686"
+              id="Icon_ionic-ios-play"
+              data-name="Icon ionic-ios-play"
+              d="M9,7.579V37.919a.781.781,0,0,0,1.17.72l24.049-15.17a.859.859,0,0,0,0-1.43L10.17,6.869A.774.774,0,0,0,9,7.579Z"
+              transform="translate(-9 -6.751)"
+              fill="#B28686" start
             />
           </svg>
-          start
-        </button>
+          PLAY
+        </motion.button>
       </div>
+      </AnimatePresence>
     </Html>
   );
 };

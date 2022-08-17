@@ -30,6 +30,7 @@ body {
   position: relative;
   background-color: black;
   color: white;
+  overflow-x: hidden;
 }
 
 
@@ -44,10 +45,10 @@ a {
 }
 
 .canvas-container {
-  position: fixed !important;
+  /* position: fixed !important; */
   z-index: -3;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 .clicked {

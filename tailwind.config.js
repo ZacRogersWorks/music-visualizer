@@ -12,7 +12,8 @@ theme: {
     sky: "#A7BEBF",
     midnight: "#0D1B22",
     black: "#000000",
-    transparent:"transparent"
+    transparent:"transparent",
+    white: "#ffffff"
   },
   extend: {
     fontFamily: {

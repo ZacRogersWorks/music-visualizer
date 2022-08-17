@@ -5,7 +5,7 @@ import { MeshStandardMaterial } from "three";
 import { suspend } from "suspend-react";
 import { createAudio } from "../../audio/createAudio";
 
-const number_of_meshes = 4096;
+const number_of_meshes = 2048;
 const radius = 7;
 const radian_interval = (2.0 * Math.PI) / number_of_meshes;
 const center_of_wheel = {
