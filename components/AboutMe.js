@@ -6,6 +6,9 @@ import { indexVariants } from "./animation/variants";
 
 import SocialLinks from "./SocialLinks";
 
+import footerBg from '../public/images/footerbg.jpg'
+import me from '../public/images/about_thumbnail.jpg'
+
 const AboutMe = () => {
   const headingControls = useAnimation();
   const [headingRef, headingInView] = useInView({ threshold: 0.8 });
@@ -23,7 +26,7 @@ const AboutMe = () => {
     >
       <div className="absolute bottom-0 right-0 w-[80%] lg:w-[50%] xl:w-[45%] h-auto">
         <Image
-          src="/images/footerbg.jpg"
+          src={footerBg}
           alt="Background"
           layout="responsive"
           width="2160"
@@ -73,7 +76,7 @@ const AboutMe = () => {
           <div className="w-[50%] mt-[-2rem] md:mt-[-4rem] z-0 self-center"
           >
             <Image
-              src="/images/about_thumbnail.jpg"
+              src={me}
               alt="About Me"
               layout="responsive"
               width="1080"

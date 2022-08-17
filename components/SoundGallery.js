@@ -5,6 +5,8 @@ import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { indexVariants } from "./animation/variants";
 
+import cashmereThumb from '../public/images/tracks/cashmere_thumbnail.jpg'
+
 const randomKey = Math.random();
 
 const SoundGallery = () => {
@@ -75,7 +77,7 @@ const SoundGallery = () => {
             <Link href="/tracks/dub">
               <a>
                 <Image
-                  src="/images/tracks/ujjjjayi_thumbnail.jpg"
+                  src={cashmereThumb}
                   alt="Ujjjjayi"
                   layout="responsive"
                   width="1608"
